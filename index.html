@@ -3,105 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HiTech Squad | Gateway</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&display=swap" rel="stylesheet">
+    <title>Itzites | HiTech Squad</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --primary: #00f2ff;
-            --bg: #050505;
+            --bg: #0f172a;
+            --accent: #38bdf8;
+            --text: #f1f5f9;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
         }
 
         body {
             background-color: var(--bg);
-            color: white;
-            font-family: 'Space Grotesk', sans-serif;
-            margin: 0;
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- Animated Background Blobs --- */
+        .blob {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+            filter: blur(80px);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.15;
+            animation: move 20s infinite alternate;
+        }
+
+        @keyframes move {
+            from { transform: translate(-10%, -10%); }
+            to { transform: translate(20%, 20%); }
+        }
+
+        /* --- Layout --- */
+        header {
+            height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        /* Scanline Effect Animation */
-        body::before {
-            content: " ";
-            position: absolute;
-            top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
-                        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            background-size: 100% 2px, 3px 100%;
-            z-index: 10;
-            pointer-events: none;
-        }
-
-        .container {
             text-align: center;
-            z-index: 2;
+            padding: 20px;
         }
 
         h1 {
             font-size: 4rem;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            color: var(--primary);
-            text-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* The Animated Button */
-        .btn {
-            display: inline-block;
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-            text-decoration: none;
-            position: relative;
+        .typewriter {
+            font-size: 1.5rem;
+            border-right: 3px solid var(--accent);
+            white-space: nowrap;
             overflow: hidden;
-            transition: 0.4s;
-            letter-spacing: 2px;
+            width: 0;
+            animation: typing 3.5s steps(30, end) forwards, blink 0.75s step-end infinite;
+        }
+
+        @keyframes typing { from { width: 0 } to { width: 100% } }
+        @keyframes blink { 50% { border-color: transparent } }
+
+        /* --- Project Grid --- */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.2);
+        }
+
+        .btn {
+            margin-top: 2rem;
+            padding: 12px 30px;
+            background: var(--accent);
+            color: var(--bg);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: 0.3s;
+            display: inline-block;
         }
 
         .btn:hover {
-            background: var(--primary);
-            color: var(--bg);
-            box-shadow: 0 0 50px var(--primary);
-            transform: scale(1.1);
+            box-shadow: 0 0 20px var(--accent);
+            transform: scale(1.05);
         }
 
-        /* Pulsing Background Glow */
-        .glow {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: var(--primary);
-            filter: blur(120px);
-            opacity: 0.2;
-            z-index: -1;
-            animation: pulse 5s infinite alternate;
-        }
-
-        @keyframes pulse {
-            from { transform: scale(1); opacity: 0.1; }
-            to { transform: scale(1.5); opacity: 0.3; }
+        /* Responsive */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="glow"></div>
+    <div class="blob"></div>
 
-    <div class="container">
-        <h1>HiTech Squad</h1>
-        <p style="opacity: 0.6; margin-bottom: 40px;">System Status: Online</p>
-        
-        <a href="http://hitechsquad.unaux.com" target="_blank" rel="noopener noreferrer" class="btn">
-            View My Work
-        </a>
-    </div>
+    <header>
+        <h1>Hello, I'm Itzites</h1>
+        <div class="typewriter-container">
+            <p class="typewriter">Welcome to the HiTech Squad.</p>
+        </div>
+        <a href="http://hitechsquad.unaux.com" target="_blank" class="btn">View My Work</a>
+    </header>
+
+    <section class="container" id="projects">
+        <h2 style="text-align: center; font-size: 2.5rem;">Quick Access</h2>
+        <div class="grid">
+            <a href="http://hitechsquad.unaux.com" class="card">
+                <h3>Main Hub</h3>
+                <p style="margin: 1rem 0; opacity: 0.8;">Explore the full HiTech Squad experience and latest software.</p>
+                <small>Visit Site →</small>
+            </a>
+            <div class="card">
+                <h3>GitHub Repos</h3>
+                <p style="margin: 1rem 0; opacity: 0.8;">Check out the source code for my public projects.</p>
+                <small>Open Source</small>
+            </div>
+            <div class="card">
+                <h3>System Status</h3>
+                <p style="margin: 1rem 0; opacity: 0.8;">All systems operational across the Unaux network.</p>
+                <small>Online</small>
+            </div>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 50px; opacity: 0.5;">
+        <p>&copy; 2026 itzites.github.io | Powered by HiTech Squad</p>
+    </footer>
 
 </body>
 </html>
