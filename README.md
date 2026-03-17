@@ -38,3 +38,8 @@ My main portfolio and project repository is hosted at:
   <img src="https://capsule-render.vercel.app/api?type=waving&color=00f2ff&height=100&section=footer" width="100%"/>
   <p><i>"The best way to predict the future is to invent it."</i></p>
 </div>
+
+
+<p align="center">
+  <img src="https://komarev.com/ghpvc/?username=kishorofficials&color=blue" alt="Profile Views" />
+</p>
