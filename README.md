@@ -41,5 +41,5 @@ My main portfolio and project repository is hosted at:
 
 
 <p align="center">
-  <img src="https://komarev.com/ghpvc/?username=kishorofficials&color=blue" alt="Profile Views" />
+  <img src="https://komarev.com/ghpvc/?username=itzites&color=blue" alt="Profile Views" />
 </p>
